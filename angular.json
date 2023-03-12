@@ -3,5 +3,53 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "ngx-gantt-chart": {
+      "projectType": "library",
+      "root": "projects/ngx-gantt-chart",
+      "sourceRoot": "projects/ngx-gantt-chart/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ngx-gantt-chart/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-gantt-chart/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ngx-gantt-chart/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/ngx-gantt-chart/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/ngx-gantt-chart/**/*.ts",
+              "projects/ngx-gantt-chart/**/*.html"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": "58f20a74-100e-4970-be7f-2249c465415f",
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }
