@@ -49,10 +49,16 @@ export class NgxGanttChartComponent {
 
   /** Given an date the percentage of days over the total gantt chart period */
   getEventOffsetPercentage(eventStartDate: Date): number {
+    console.log(eventStartDate);
     const daysPriorToEventStart = NgxGanttChartService.dateDifference(
       eventStartDate,
       this.startDate
     );
+    console.log(
+      'calculation: ',
+      ((daysPriorToEventStart - 1) / this.chartPeriodDays) * 100
+    );
+
     return ((daysPriorToEventStart - 1) / this.chartPeriodDays) * 100;
   }
 
