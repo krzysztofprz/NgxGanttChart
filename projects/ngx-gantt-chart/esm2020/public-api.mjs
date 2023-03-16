@@ -1,0 +1,7 @@
+/*
+ * Public API Surface of ngx-gantt-chart
+ */
+export * from './lib/ngx-gantt-chart.service';
+export * from './lib/ngx-gantt-chart.component';
+export * from './lib/ngx-gantt-chart.module';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljLWFwaS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3Byb2plY3RzL25neC1nYW50dC1jaGFydC9zcmMvcHVibGljLWFwaS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7R0FFRztBQUVILGNBQWMsK0JBQStCLENBQUM7QUFDOUMsY0FBYyxpQ0FBaUMsQ0FBQztBQUNoRCxjQUFjLDhCQUE4QixDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiLypcclxuICogUHVibGljIEFQSSBTdXJmYWNlIG9mIG5neC1nYW50dC1jaGFydFxyXG4gKi9cclxuXHJcbmV4cG9ydCAqIGZyb20gJy4vbGliL25neC1nYW50dC1jaGFydC5zZXJ2aWNlJztcclxuZXhwb3J0ICogZnJvbSAnLi9saWIvbmd4LWdhbnR0LWNoYXJ0LmNvbXBvbmVudCc7XHJcbmV4cG9ydCAqIGZyb20gJy4vbGliL25neC1nYW50dC1jaGFydC5tb2R1bGUnO1xyXG4iXX0=

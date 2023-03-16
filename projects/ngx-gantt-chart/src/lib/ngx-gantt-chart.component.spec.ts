@@ -8,9 +8,8 @@ describe('NgxGanttChartComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NgxGanttChartComponent ]
-    })
-    .compileComponents();
+      declarations: [NgxGanttChartComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(NgxGanttChartComponent);
     component = fixture.componentInstance;

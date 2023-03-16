@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
+import { NgxGanttChartModule } from './ngx-gantt-chart.module';
 
-@Injectable({
-  providedIn: 'root',
-})
+// @Injectable({
+//   providedIn: 'root',
+//   providedIn: NgxGanttChartModule,
+// })
+@Injectable()
 export class NgxGanttChartService {
   constructor() {}
 
