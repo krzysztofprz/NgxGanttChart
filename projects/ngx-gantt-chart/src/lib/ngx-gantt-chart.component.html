@@ -1,307 +1,44 @@
 <div>
-  <div class="d-flex flex-row p-2">
+  <div class="d-flex flex-row p-2 headers">
     <div class="p-2 activity">Activity</div>
-    <div class="d-flex flex-row flex-fill justify-content-between">
-      <div class="p-2">Marzec</div>
-      <div class="p-2">Kwiecien</div>
-      <div class="p-2">Maj</div>
-      <div class="p-2">Czerwiec</div>
-      <div class="p-2"></div>
+    <div class="d-flex flex-row flex-fill">
+      <div
+        class="p-2 month"
+        [style.width]="monthBlockWidth + '%'"
+        *ngFor="let month of months"
+      >
+        {{ month.monthName }}
+      </div>
     </div>
   </div>
-  <div class="d-flex flex-row p-2">
-    <div class="p-2 activity">CopyrightAcquiring</div>
+
+  <div class="d-flex flex-row p-2" *ngFor="let row of rows">
+    <div class="p-2 activity">{{ row.name }}</div>
     <div class="d-flex flex-row flex-fill justify-content-between">
       <div
-        class="p-2 month-border"
-        style="width: 100%; background-color: lightblue"
+        class="details"
+        [style.width]="row.monthPercentage + '%'"
+        [style.margin-left]="row.leftOffset + '%'"
+        style="background-color: yellowgreen"
+        data-bs-toggle="tooltip"
+        data-bs-placement="top"
+        data-bs-html="true"
+        title="Etap: {{ row.name }}&#013;Data rozpoczecia: {{
+          row.startDate | date : 'dd/MM/yyyy'
+        }}&#013;Data zakonczenia: {{ row.endDate | date : 'dd/MM/yyyy' }}"
       ></div>
-      <div
-        class="p-2 month-border"
-        style="width: 50%; background-color: lightblue"
-      ></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-    </div>
-  </div>
-  <div class="d-flex flex-row p-2">
-    <div class="p-2 activity">Manuscript</div>
-    <div class="d-flex flex-row flex-fill justify-content-between">
-      <div
-        class="p-2 month-border"
-        style="width: 50%; background-color: lightblue"
-      ></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-    </div>
-  </div>
-  <div class="d-flex flex-row p-2">
-    <div class="p-2 activity">Cover</div>
-    <div class="d-flex flex-row flex-fill justify-content-between">
-      <div class="p-2 month-border" style="width: 100%"></div>
-      <div
-        class="p-2 month-border"
-        style="width: 70%; background-color: lightblue"
-      ></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-    </div>
-  </div>
-  <div class="d-flex flex-row p-2">
-    <div class="p-2 activity">Styling</div>
-    <div class="d-flex flex-row flex-fill justify-content-between">
-      <div class="p-2 month-border" style="width: 100%"></div>
-      <div
-        class="p-2 month-border"
-        style="width: 30%; background-color: lightblue"
-      ></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-    </div>
-  </div>
-  <div class="d-flex flex-row p-2">
-    <div class="p-2 activity">Layout</div>
-    <div class="d-flex flex-row flex-fill justify-content-between">
-      <div class="p-2 month-border" style="width: 100%"></div>
-      <div
-        class="p-2 month-border"
-        style="width: 66%; background-color: lightblue"
-      ></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-    </div>
-  </div>
-  <div class="d-flex flex-row p-2">
-    <div class="p-2 activity">Typesetting</div>
-    <div class="d-flex flex-row flex-fill justify-content-between">
-      <div class="p-2 month-border" style="width: 100%"></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-      <div
-        class="p-2 month-border"
-        style="width: 20%; background-color: lightblue"
-      ></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-    </div>
-  </div>
-  <div class="d-flex flex-row p-2">
-    <div class="p-2 activity">ContentRelatedCorrection</div>
-    <div class="d-flex flex-row flex-fill justify-content-between">
-      <div class="p-2 month-border" style="width: 100%"></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-      <div
-        class="p-2 month-border"
-        style="width: 100%; background-color: lightblue"
-      ></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-    </div>
-  </div>
-  <div class="d-flex flex-row p-2">
-    <div class="p-2 activity">LinguisticCorrection</div>
-    <div class="d-flex flex-row flex-fill justify-content-between">
-      <div
-        class="p-2 month-border"
-        style="width: 100%; background-color: lightblue"
-      ></div>
-      <div
-        class="p-2 month-border"
-        style="width: 50%; background-color: lightblue"
-      ></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-    </div>
-  </div>
-  <div class="d-flex flex-row p-2">
-    <div class="p-2 activity">WorkFinishing</div>
-    <div class="d-flex flex-row flex-fill justify-content-between">
-      <div
-        class="p-2 month-border"
-        style="width: 100%; background-color: lightblue"
-      ></div>
-      <div
-        class="p-2 month-border"
-        style="width: 50%; background-color: lightblue"
-      ></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-    </div>
-  </div>
-  <div class="d-flex flex-row p-2">
-    <div class="p-2 activity">Acceptance</div>
-    <div class="d-flex flex-row flex-fill justify-content-between">
-      <div
-        class="p-2 month-border"
-        style="width: 100%; background-color: lightblue"
-      ></div>
-      <div
-        class="p-2 month-border"
-        style="width: 50%; background-color: lightblue"
-      ></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-    </div>
-  </div>
-  <div class="d-flex flex-row p-2">
-    <div class="p-2 activity">ExperimentalPrint</div>
-    <div class="d-flex flex-row flex-fill justify-content-between">
-      <div
-        class="p-2 month-border"
-        style="width: 100%; background-color: lightblue"
-      ></div>
-      <div
-        class="p-2 month-border"
-        style="width: 50%; background-color: lightblue"
-      ></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-    </div>
-  </div>
-  <div class="d-flex flex-row p-2">
-    <div class="p-2 activity">ExperimentalPrintCorrection</div>
-    <div class="d-flex flex-row flex-fill justify-content-between">
-      <div
-        class="p-2 month-border"
-        style="width: 100%; background-color: lightblue"
-      ></div>
-      <div
-        class="p-2 month-border"
-        style="width: 50%; background-color: lightblue"
-      ></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-    </div>
-  </div>
-  <div class="d-flex flex-row p-2">
-    <div class="p-2 activity">BookPrintCommision</div>
-    <div class="d-flex flex-row flex-fill justify-content-between">
-      <div
-        class="p-2 month-border"
-        style="width: 100%; background-color: lightblue"
-      ></div>
-      <div
-        class="p-2 month-border"
-        style="width: 50%; background-color: lightblue"
-      ></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-    </div>
-  </div>
-  <div class="d-flex flex-row p-2">
-    <div class="p-2 activity">EbookCommision</div>
-    <div class="d-flex flex-row flex-fill justify-content-between">
-      <div
-        class="p-2 month-border"
-        style="width: 100%; background-color: lightblue"
-      ></div>
-      <div
-        class="p-2 month-border"
-        style="width: 50%; background-color: lightblue"
-      ></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-    </div>
-  </div>
-  <div class="d-flex flex-row p-2">
-    <div class="p-2 activity">EditionCollection</div>
-    <div class="d-flex flex-row flex-fill justify-content-between">
-      <div
-        class="p-2 month-border"
-        style="width: 100%; background-color: lightblue"
-      ></div>
-      <div
-        class="p-2 month-border"
-        style="width: 50%; background-color: lightblue"
-      ></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-    </div>
-  </div>
-  <div class="d-flex flex-row p-2">
-    <div class="p-2 activity">PublicationLive</div>
-    <div class="d-flex flex-row flex-fill justify-content-between">
-      <div
-        class="p-2 month-border"
-        style="width: 100%; background-color: lightblue"
-      ></div>
-      <div
-        class="p-2 month-border"
-        style="width: 50%; background-color: lightblue"
-      ></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
-      <div class="p-2 month-border" style="width: 100%"></div>
+      <!-- <div
+        class="d-flex flex-row p-2 month-border"
+        [style.width]="monthBlockWidth + '%'"
+        *ngFor="let month of months"
+      >
+        <div
+          [style.width]="row.monthPercentage + '%'"
+          style="background-color: yellowgreen"
+        >
+          xxx
+        </div>
+      </div> -->
     </div>
   </div>
 </div>
-
-<!-- <div>
-  <button class="btn btn-primary">Test</button>
-</div>
-
-<div class="container">
-
-  # gantt chart rows #
-  <div class="gantt-chart-row" *ngFor="let row of rows; let i = index">
-    <div class="row-title">
-      {{ row.name }}
-    </div>
-    <div class="row-events">
-      # event period blocks #
-      <div
-        class="event-period tooltip"
-        *ngFor="let event of row.events"
-        [style.margin-left]="getEventOffsetPercentage(event.startDate) + '%'"
-        [style.width]="getEventDurationPercentage(event) + '%'"
-        [style.background]="getColour(i)"
-      >
-        <span class="event-name">{{ event.name }}</span>
-        <div class="tooltip-text">
-          <div>
-            <strong>{{ event.name }}: </strong>
-          </div>
-          {{ event.startDate | date : "mediumDate" }} -
-          {{ event.endDate | date : "mediumDate" }}
-        </div>
-      </div>
-
-      # event milestones #
-      <div
-        class="event-milestone tooltip"
-        *ngFor="let milestone of row.milestones"
-        [style.margin-left]="getEventOffsetPercentage(milestone.date) + '%'"
-      >
-        <i class="fas fa-star"></i>
-        <div class="tooltip-text">
-          <div>
-            <strong>{{ milestone.name }}: </strong>
-          </div>
-          {{ milestone.date | date : "mediumDate" }}
-        </div>
-      </div>
-
-      # gantt chart grid lines #
-      <div class="grid-lines">
-        <span
-          class="grid-line"
-          *ngFor="let month of monthAxis"
-          [style.width]="month.monthDurationPercentage + '%'"
-        ></span>
-      </div>
-    </div>
-  </div>
-</div> -->

@@ -3,6 +3,10 @@ import { IGanttChartMilestone } from './IGanttChartMilestone';
 
 export interface IGanttCharRow {
   name: string;
-  events: IGanttChartEvent[];
-  milestones: IGanttChartMilestone[];
+  startDate: Date;
+  endDate: Date;
+  monthPercentage: number;
+  leftOffset: number;
+  // events: IGanttChartEvent[];
+  // milestones: IGanttChartMilestone[];
 }

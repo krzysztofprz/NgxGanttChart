@@ -11,92 +11,93 @@ import { MonthAxis } from './models/MonthAxis';
 })
 export class NgxGanttChartComponent {
   @Input() rows: IGanttCharRow[] = [];
-  @Input() startDate: Date = new Date('2021-01-01');
-  @Input() endDate: Date = new Date('2021-04-30');
+  @Input() startDate: Date = new Date();
+  @Input() endDate: Date = new Date();
+  test =
+    'First ordered list item\n2. Another item\n * Unordered sub-list.\n'.replace(
+      '\n',
+      '<br/>'
+    );
 
-  chartPeriodDays: number;
-  monthAxis: MonthAxis[];
-  colourPallete = [
-    '#7C4DFF',
-    '#81c784',
-    '#e53935',
-    '#FF8A80',
-    '#303F9F',
-    '#40C4FF',
-    '#006064',
-    '#FF8A65',
-  ];
+  MONTH_DAYS = 30;
+  chart_days = 0;
+  months: { monthName: string }[] = [];
+  monthBlockWidth = 0;
 
   constructor() {
-    this.chartPeriodDays = NgxGanttChartService.dateDifference(
-      this.endDate,
-      this.startDate,
-      true
-    );
-    this.monthAxis = this.getMonths(this.startDate, this.endDate);
+    this.months = [
+      {
+        monthName: NgxGanttChartService.getMonthName(new Date('2023-03-01')),
+      },
+      {
+        monthName: NgxGanttChartService.getMonthName(new Date('2023-04-01')),
+      },
+      {
+        monthName: NgxGanttChartService.getMonthName(new Date('2023-05-01')),
+      },
+      {
+        monthName: NgxGanttChartService.getMonthName(new Date('2023-06-01')),
+      },
+    ];
+
+    this.monthBlockWidth = 100 / this.months.length;
+    this.chart_days = this.months.length * this.MONTH_DAYS;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.rows = [
+      {
+        name: 'CopyrightAcquiring',
+        startDate: new Date('2023-03-01'),
+        endDate: new Date('2023-03-10'),
+        monthPercentage: 16.667,
+        leftOffset: 0,
+      },
+      {
+        name: 'Manuscript',
+        startDate: new Date('2023-03-10'),
+        endDate: new Date('2023-03-15'),
+        monthPercentage: 8.333,
+        leftOffset: 16.667,
+      },
+      {
+        name: 'Cover',
+        startDate: new Date('2023-03-15'),
+        endDate: new Date('2023-04-15'),
+        monthPercentage: 50,
+        leftOffset: 25,
+      },
+      {
+        name: 'Styling',
+        startDate: new Date('2023-03-15'),
+        endDate: new Date('2023-04-15'),
+        monthPercentage: 50,
+        leftOffset: 25,
+      },
+      {
+        name: 'Layout',
+        startDate: new Date('2023-03-15'),
+        endDate: new Date('2023-04-15'),
+        monthPercentage: 50,
+        leftOffset: 25,
+      },
+      {
+        name: 'Typesetting',
+        startDate: new Date('2023-04-15'),
+        endDate: new Date('2023-04-30'),
+        monthPercentage: 25,
+        leftOffset: 75,
+      },
+    ];
 
-  /** Given an event calculate the percentage of days over the total gantt chart period */
-  getEventDurationPercentage(event: IGanttChartEvent): number {
-    const eventDays = NgxGanttChartService.dateDifference(
-      event.endDate,
-      event.startDate
-    );
-    return (eventDays / this.chartPeriodDays) * 100;
-  }
+    this.rows.forEach((row) => {
+      const monthsDiff =
+        (row.endDate.getMonth() - row.startDate.getMonth()) * this.MONTH_DAYS;
 
-  /** Given an date the percentage of days over the total gantt chart period */
-  getEventOffsetPercentage(eventStartDate: Date): number {
-    console.log(eventStartDate);
-    const daysPriorToEventStart = NgxGanttChartService.dateDifference(
-      eventStartDate,
-      this.startDate
-    );
-    console.log(
-      'calculation: ',
-      ((daysPriorToEventStart - 1) / this.chartPeriodDays) * 100
-    );
+      const daysDiff =
+        row.endDate.getDate() - row.startDate.getDate() + monthsDiff;
 
-    return ((daysPriorToEventStart - 1) / this.chartPeriodDays) * 100;
-  }
-
-  /** Given a start and end date will return full months between period along with month names and
-   * relative duration percentages for each month
-   */
-  getMonths(startDate: Date, endDate: Date): MonthAxis[] {
-    const startMonth = startDate.getMonth();
-    const endMonth = endDate.getMonth();
-    const totalDurationDays = NgxGanttChartService.dateDifference(
-      startDate,
-      endDate,
-      true
-    );
-    const months: MonthAxis[] = [];
-
-    let i = 0;
-    const iMax = endMonth - startMonth;
-
-    for (i; i <= iMax; i++) {
-      const adjustedStartDate = NgxGanttChartService.addMonths(startDate, i);
-      const monthName = NgxGanttChartService.getMonthName(adjustedStartDate);
-      const daysInMonth = NgxGanttChartService.daysInMonth(adjustedStartDate);
-      const monthDurationPercentage = (daysInMonth / totalDurationDays) * 100;
-      months.push({
-        monthName: monthName,
-        monthDurationPercentage: monthDurationPercentage,
-      });
-    }
-    return months;
-  }
-
-  /** Given colour for */
-  getColour(rowIndex: number): string {
-    if (this.rows.length < rowIndex) {
-      return '#64b5f6';
-    }
-
-    return this.colourPallete[rowIndex];
+      row.monthPercentage = (daysDiff / this.chart_days) * 100;
+    });
   }
 }

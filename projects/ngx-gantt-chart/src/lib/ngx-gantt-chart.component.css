@@ -1,8 +1,27 @@
+.headers {
+  border-bottom: 1px solid grey;
+}
+
 .activity {
   flex: 0 0 25%;
+  border-right: solid 1px grey;
 }
 
 .month-border {
   border: solid white;
-  border-width: 1px 1px 1px 0;
+  border-width: 1px 0 1px 0;
+  border-right: solid 1px grey;
+}
+
+.month {
+  border-right: solid 1px grey;
+  text-align: center;
+}
+
+.month:last-child {
+  border-right: none;
+}
+
+.details:hover {
+  cursor: pointer;
 }
