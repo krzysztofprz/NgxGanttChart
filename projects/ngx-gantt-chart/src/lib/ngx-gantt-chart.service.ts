@@ -1,11 +1,8 @@
 import { Injectable } from '@angular/core';
-import { NgxGanttChartModule } from './ngx-gantt-chart.module';
 
-// @Injectable({
-//   providedIn: 'root',
-//   providedIn: NgxGanttChartModule,
-// })
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class NgxGanttChartService {
   constructor() {}
 
@@ -51,7 +48,7 @@ export class NgxGanttChartService {
 
   /** This method will give you a month name based on a month number */
   static getMonthName(date: Date): string {
-    return new Intl.DateTimeFormat('en-US', { month: 'short' }).format(date);
+    return new Intl.DateTimeFormat('pl-PL', { month: 'long' }).format(date);
   }
 
   /** Given a date this method will return the number of days in the specified month */

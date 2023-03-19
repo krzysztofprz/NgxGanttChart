@@ -2,11 +2,7 @@
   <div class="d-flex flex-row p-2 headers">
     <div class="p-2 activity">Activity</div>
     <div class="d-flex flex-row flex-fill">
-      <div
-        class="p-2 month"
-        [style.width]="monthBlockWidth + '%'"
-        *ngFor="let month of months"
-      >
+      <div class="p-2 month" [style.width]="monthBlockWidth + '%'" *ngFor="let month of months">
         {{ month.monthName }}
       </div>
     </div>
@@ -25,20 +21,7 @@
         data-bs-html="true"
         title="Etap: {{ row.name }}&#013;Data rozpoczecia: {{
           row.startDate | date : 'dd/MM/yyyy'
-        }}&#013;Data zakonczenia: {{ row.endDate | date : 'dd/MM/yyyy' }}"
-      ></div>
-      <!-- <div
-        class="d-flex flex-row p-2 month-border"
-        [style.width]="monthBlockWidth + '%'"
-        *ngFor="let month of months"
-      >
-        <div
-          [style.width]="row.monthPercentage + '%'"
-          style="background-color: yellowgreen"
-        >
-          xxx
-        </div>
-      </div> -->
+        }}&#013;Data zakonczenia: {{ row.endDate | date : 'dd/MM/yyyy' }}"></div>
     </div>
   </div>
 </div>
