@@ -11,80 +11,76 @@ export class NgxGanttChartComponent {
   @Input() rows: IGanttCharRow[] = [];
   @Input() startDate: Date = new Date();
   @Input() endDate: Date = new Date();
-  test =
-    'First ordered list item\n2. Another item\n * Unordered sub-list.\n'.replace(
-      '\n',
-      '<br/>'
-    );
 
   MONTH_DAYS = 30;
   chart_days = 0;
   months: { month: number; monthName: string }[] = [];
   monthBlockWidth = 0;
 
-  constructor() {
-    this.months = [
-      {
-        month: new Date('2023-03-01').getMonth(),
-        monthName: NgxGanttChartService.getMonthName(new Date('2023-03-01')),
-      },
-      {
-        month: new Date('2023-04-01').getMonth(),
-        monthName: NgxGanttChartService.getMonthName(new Date('2023-04-01')),
-      },
-      {
-        month: new Date('2023-05-01').getMonth(),
-        monthName: NgxGanttChartService.getMonthName(new Date('2023-05-01')),
-      },
-      {
-        month: new Date('2023-06-01').getMonth(),
-        monthName: NgxGanttChartService.getMonthName(new Date('2023-06-01')),
-      },
-    ];
-
-    this.monthBlockWidth = 100 / this.months.length;
-    this.chart_days = this.months.length * this.MONTH_DAYS;
-  }
+  constructor() {}
 
   ngOnInit(): void {
+    this.startDate = new Date('2023-03-01');
+    this.endDate = new Date('2023-06-01');
+
+    const chartMonths = this.endDate.getMonth() - this.startDate.getMonth();
+
+    let i = 0;
+
+    for (i; i < chartMonths; i++) {
+      this.months.push({
+        month: this.startDate.getMonth() + i,
+        monthName: NgxGanttChartService.getMonthName(
+          new Date(
+            this.startDate.getFullYear(),
+            this.startDate.getMonth() + i,
+            this.startDate.getDate()
+          )
+        ),
+      });
+    }
+
+    this.monthBlockWidth = 100 / chartMonths;
+    this.chart_days = chartMonths * this.MONTH_DAYS;
+
     this.rows = [
       {
-        name: 'CopyrightAcquiring',
+        eventName: 'CopyrightAcquiring',
         startDate: new Date('2023-03-01'),
         endDate: new Date('2023-03-10'),
         monthPercentage: 0,
         leftOffset: 0,
       },
       {
-        name: 'Manuscript',
+        eventName: 'Manuscript',
         startDate: new Date('2023-03-10'),
         endDate: new Date('2023-03-15'),
         monthPercentage: 8.333,
         leftOffset: 0,
       },
       {
-        name: 'Cover',
+        eventName: 'Cover',
         startDate: new Date('2023-03-15'),
         endDate: new Date('2023-04-15'),
         monthPercentage: 0,
         leftOffset: 0,
       },
       {
-        name: 'Styling',
+        eventName: 'Styling',
         startDate: new Date('2023-03-15'),
         endDate: new Date('2023-04-15'),
         monthPercentage: 0,
         leftOffset: 0,
       },
       {
-        name: 'Layout',
+        eventName: 'Layout',
         startDate: new Date('2023-03-15'),
         endDate: new Date('2023-04-15'),
         monthPercentage: 0,
         leftOffset: 0,
       },
       {
-        name: 'Typesetting',
+        eventName: 'Typesetting',
         startDate: new Date('2023-04-15'),
         endDate: new Date('2023-04-30'),
         monthPercentage: 0,
@@ -105,7 +101,7 @@ export class NgxGanttChartComponent {
       row.monthPercentage = (daysDiff / this.chart_days) * 100;
 
       const startDateMonthsDiff =
-        (rowStartDateMonth - this.months[0].month) * this.MONTH_DAYS;
+        (rowStartDateMonth - this.startDate.getMonth()) * this.MONTH_DAYS;
 
       row.leftOffset =
         ((rowStartDateDay + startDateMonthsDiff) / this.chart_days) * 100;

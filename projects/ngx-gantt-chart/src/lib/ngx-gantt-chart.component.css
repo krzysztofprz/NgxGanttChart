@@ -22,6 +22,10 @@
   border-right: none;
 }
 
+.details {
+  border-radius: 1rem;
+}
+
 .details:hover {
   cursor: pointer;
 }

@@ -1,10 +1,16 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, Optional } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class NgxGanttChartService {
-  constructor() {}
+  _locale = 'en-US';
+
+  constructor(@Inject('locale') @Optional() public locale?: string) {
+    if (locale) {
+      this._locale = locale;
+    }
+  }
 
   /** Given a start and end date return the difference in months */
   static monthDiff(dateFrom: Date, dateTo: Date): number {

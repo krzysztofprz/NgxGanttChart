@@ -8,6 +8,6 @@ import { NgxGanttChartService } from './ngx-gantt-chart.service';
   imports: [BrowserModule, CommonModule, DatePipe],
   declarations: [NgxGanttChartComponent],
   exports: [NgxGanttChartComponent, DatePipe],
-  providers: [NgxGanttChartService],
+  providers: [NgxGanttChartService, { provide: 'locale', useValue: 'pl-PL' }],
 })
 export class NgxGanttChartModule {}

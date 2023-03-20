@@ -9,7 +9,7 @@
   </div>
 
   <div class="d-flex flex-row p-2" *ngFor="let row of rows">
-    <div class="p-2 activity">{{ row.name }}</div>
+    <div class="p-2 activity">{{ row.eventName }}</div>
     <div class="d-flex flex-row flex-fill justify-content-between">
       <div
         class="details"
@@ -19,7 +19,7 @@
         data-bs-toggle="tooltip"
         data-bs-placement="top"
         data-bs-html="true"
-        title="Etap: {{ row.name }}&#013;Data rozpoczecia: {{
+        title="Etap: {{ row.eventName }}&#013;Data rozpoczecia: {{
           row.startDate | date : 'dd/MM/yyyy'
         }}&#013;Data zakonczenia: {{ row.endDate | date : 'dd/MM/yyyy' }}"></div>
     </div>
