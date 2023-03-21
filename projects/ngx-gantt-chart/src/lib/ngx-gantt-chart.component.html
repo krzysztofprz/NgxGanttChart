@@ -8,20 +8,20 @@
     </div>
   </div>
 
-  <div class="d-flex flex-row p-2" *ngFor="let row of rows">
-    <div class="p-2 activity">{{ row.eventName }}</div>
+  <div class="d-flex flex-row p-2" *ngFor="let block of gantChartBlocks">
+    <div class="p-2 activity">{{ block.eventName }}</div>
     <div class="d-flex flex-row flex-fill justify-content-between">
       <div
         class="details"
-        [style.width]="row.monthPercentage + '%'"
-        [style.margin-left]="row.leftOffset + '%'"
+        [style.width]="block.monthPercentage + '%'"
+        [style.margin-left]="block.leftOffset + '%'"
         style="background-color: yellowgreen"
         data-bs-toggle="tooltip"
         data-bs-placement="top"
         data-bs-html="true"
-        title="Etap: {{ row.eventName }}&#013;Data rozpoczecia: {{
-          row.startDate | date : 'dd/MM/yyyy'
-        }}&#013;Data zakonczenia: {{ row.endDate | date : 'dd/MM/yyyy' }}"></div>
+        title="Etap: {{ block.eventName }}&#013;Data rozpoczecia: {{
+          block.startDate | date : 'dd/MM/yyyy'
+        }}&#013;Data zakonczenia: {{ block.endDate | date : 'dd/MM/yyyy' }}"></div>
     </div>
   </div>
 </div>

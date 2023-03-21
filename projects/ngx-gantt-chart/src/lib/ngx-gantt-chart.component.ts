@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { IGanttCharRow } from './models/IGanttCharRow';
+import { IGanttCharRowBlock } from './models/IGantChartRowBlock';
+import { IGanttChartRow } from './models/IGanttCharRow';
 import { NgxGanttChartService } from './ngx-gantt-chart.service';
 
 @Component({
@@ -8,14 +9,15 @@ import { NgxGanttChartService } from './ngx-gantt-chart.service';
   styleUrls: ['ngx-gantt-chart.component.css'],
 })
 export class NgxGanttChartComponent {
-  @Input() rows: IGanttCharRow[] = [];
+  @Input() rows: IGanttChartRow[] = [];
   @Input() startDate: Date = new Date();
   @Input() endDate: Date = new Date();
 
   MONTH_DAYS = 30;
   chart_days = 0;
-  months: { month: number; monthName: string }[] = [];
   monthBlockWidth = 0;
+  months: { month: number; monthName: string }[] = [];
+  gantChartBlocks: IGanttCharRowBlock[] = [];
 
   constructor() {}
 
@@ -50,13 +52,17 @@ export class NgxGanttChartComponent {
 
       const daysDiff = row.endDate.getDate() - rowStartDateDay + monthsDiff;
 
-      row.monthPercentage = (daysDiff / this.chart_days) * 100;
-
       const startDateMonthsDiff =
         (rowStartDateMonth - this.startDate.getMonth()) * this.MONTH_DAYS;
 
-      row.leftOffset =
-        ((rowStartDateDay + startDateMonthsDiff) / this.chart_days) * 100;
+      this.gantChartBlocks.push({
+        eventName: row.eventName,
+        startDate: row.startDate,
+        endDate: row.endDate,
+        monthPercentage: (daysDiff / this.chart_days) * 100,
+        leftOffset:
+          ((rowStartDateDay + startDateMonthsDiff) / this.chart_days) * 100,
+      });
     });
   }
 }

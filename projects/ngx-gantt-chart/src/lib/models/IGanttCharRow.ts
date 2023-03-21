@@ -1,7 +1,5 @@
-export interface IGanttCharRow {
+export interface IGanttChartRow {
   eventName: string;
   startDate: Date;
   endDate: Date;
-  monthPercentage: number;
-  leftOffset: number;
 }
