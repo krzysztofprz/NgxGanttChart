@@ -22,6 +22,9 @@ export class NgxGanttChartComponent {
   constructor() {}
 
   ngOnInit(): void {
+    this.startDate = new Date(this.startDate);
+    this.endDate = new Date(this.endDate);
+
     const chartMonths = this.endDate.getMonth() - this.startDate.getMonth() + 1;
 
     let i = 0;
@@ -43,6 +46,9 @@ export class NgxGanttChartComponent {
     this.chart_days = chartMonths * this.MONTH_DAYS;
 
     this.rows.forEach((row) => {
+      row.startDate = new Date(row.startDate);
+      row.endDate = new Date(row.endDate);
+
       const rowStartDateDay =
         row.startDate.getDate() === 1 ? 0 : row.startDate.getDate();
       const rowStartDateMonth = row.startDate.getMonth();
