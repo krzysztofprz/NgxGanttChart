@@ -1,16 +1,9 @@
-import { Inject, Injectable, Optional } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { LOCALE } from './ngx-gantt-chart.module';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class NgxGanttChartService {
-  _locale = 'en-US';
-
-  constructor(@Inject('locale') @Optional() public locale?: string) {
-    if (locale) {
-      this._locale = locale;
-    }
-  }
+  constructor() {}
 
   /** Given a start and end date return the difference in months */
   static monthDiff(dateFrom: Date, dateTo: Date): number {
@@ -54,7 +47,9 @@ export class NgxGanttChartService {
 
   /** This method will give you a month name based on a month number */
   static getMonthName(date: Date): string {
-    return new Intl.DateTimeFormat('pl-PL', { month: 'long' }).format(date);
+    return new Intl.DateTimeFormat(LOCALE, {
+      month: 'long',
+    }).format(date);
   }
 
   /** Given a date this method will return the number of days in the specified month */
